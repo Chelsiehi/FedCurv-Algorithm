@@ -2,30 +2,33 @@
 import matplotlib.pyplot as plt
 import os
 
+def read_data(log_path, data_type="acc"):
 
-def read_data(log_path):
-    # Read experimental data for each experiment
     all_acc_list = []
     for exp in os.listdir(log_path):
-        acc_list = read_exp_data(os.path.join(log_path, exp))
+        acc_list = read_exp_data(os.path.join(log_path, exp), data_type)
         all_acc_list.append((exp, acc_list))
 
     plt.figure(figsize=(10, 6))
     for exp, acc_list in all_acc_list:
-        plt.plot(acc_list, label=exp)  # Plot the accuracy curve for each experiment
+        plt.plot(acc_list, label=exp)
 
     plt.xlabel("Round")
     plt.ylabel("Accuracy")
-    plt.title("Cifar non-IID B = 50 E = 1/5")
+    plt.title("Experiment Accuracy Comparison")
     plt.legend()
+    plt.savefig(f"{data_type}.pdf")
     plt.show()
 
 
-def read_exp_data(exp_path):
-    with open(os.path.join(exp_path, "accuracy.dat")) as f:
+def read_exp_data(exp_path, data_type="acc"):
+    data_file = "accuracy.dat" if data_type == "acc" else "loss.dat"
+    with open(os.path.join(exp_path, data_file)) as f:
         acc_list = [float(i) for i in f.read().split()]
     return acc_list
 
 
 if __name__ == '__main__':
-    read_data("../log8")
+    read_data("../log/log16", "acc")
+    # read_data("../log16", "loss")
+

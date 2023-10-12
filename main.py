@@ -1,21 +1,3 @@
-# coding: utf-8
-import os.path
-
-import matplotlib.pyplot as plt
-import copy
-import numpy as np
-from torchvision import datasets, transforms
-import torch
-
-from utils.data import build_iid_data, build_noniid_data, draw_data_distribution, build_dir_data
-from utils.options import args_parser
-from models.Client import BaseLocal, FedCurvLocal, FedCurv
-from models.Nets import CNNMnist, CNNCifar, LeNetCifar, LeNetMnist, ResNet9
-from models.Fed import FedAvgAgg, FedCurvAgg
-from utils.test import test_img
-import torch.nn as nn
-
-
 if __name__ == '__main__':
     args = args_parser()
 
@@ -54,10 +36,10 @@ if __name__ == '__main__':
     elif args.model == 'cnn' and args.dataset == 'mnist':
         net_glob = CNNMnist(args=args).to(args.device)
     elif args.model == "resnet":
-        net_glob = ResNet9(in_channels=args.channels, num_classes=args.num_classes).to(args.device)
-
-        if args.dataset == "mnist":
-            net_glob.conv1 = nn.Conv2d(1, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+        net_glob = ResNet18(num_classes=10, in_channels=1)
+        # 如果是mnist数据集，需要修改通道数
+        #if args.dataset == "mnist":
+        #    net_glob.prep[0] = nn.Conv2d(1, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
     elif args.model == "lenet":
         if args.dataset == "mnist":
             net_glob = LeNetMnist(channels=args.channels, num_classes=args.num_classes).to(args.device)
