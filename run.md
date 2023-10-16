@@ -1,5 +1,8 @@
 
 # 实验设置
+
+python main.py --alg fedavg/fedcurv --epochs 300 --dataset mnist/cifar10 --model cnn/resnet/lenet --local_bs 10/50 --iid
+python main.py --alg fedavg/fedcurv --epochs 300 --dataset mnist/cifar10 --model cnn/resnet/lenet --local_bs 10/50
 # CNN
 ## mnist iid
 B = 10 E = 1/5/20
