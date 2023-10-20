@@ -1,8 +1,27 @@
 
 # 实验设置
 
-python main.py --alg fedavg/fedcurv --epochs 300 --dataset mnist/cifar10 --model cnn/resnet/lenet --local_bs 10/50 --iid
-python main.py --alg fedavg/fedcurv --epochs 300 --dataset mnist/cifar10 --model cnn/resnet/lenet --local_bs 10/50
+python3 main.py --alg fedavg --epochs 300 --dataset mnist --model cnn --local_ep 10
+python3 main.py --alg fedcurv --epochs 300 --dataset mnist --model cnn --local_ep 10
+python3 main.py --alg fedavg --epochs 300 --dataset mnist --model cnn --local_ep 50
+python3 main.py --alg fedcurv --epochs 300 --dataset mnist --model cnn --local_ep 50
+python3 main.py --alg fedavg --epochs 300 --dataset mnist --model cnn --local_ep 10 --iid
+python3 main.py --alg fedcurv --epochs 300 --dataset mnist --model cnn --local_ep 10 --iid
+python3 main.py --alg fedavg --epochs 300 --dataset mnist --model cnn --local_ep 50 --iid
+python3 main.py --alg fedcurv --epochs 300 --dataset mnist --model cnn --local_ep 50 --iid
+
+
+
+python3 main.py --alg fedavg --epochs 300 --dataset cifar10 --model cnn --local_ep 10
+python3 main.py --alg fedcurv --epochs 300 --dataset cifar10 --model cnn --local_ep 10
+python3 main.py --alg fedavg --epochs 300 --dataset cifar10 --model cnn --local_ep 50
+python3 main.py --alg fedcurv --epochs 300 --dataset cifar10 --model cnn --local_ep 50
+python3 main.py --alg fedavg --epochs 300 --dataset cifar10 --model cnn --local_ep 10 --iid
+python3 main.py --alg fedcurv --epochs 300 --dataset cifar10 --model cnn --local_ep 10 --iid
+python3 main.py --alg fedavg --epochs 300 --dataset cifar10 --model cnn --local_ep 50 --iid
+python3 main.py --alg fedcurv --epochs 300 --dataset cifar10 --model cnn --local_ep 50 --iid
+
+
 # CNN
 ## mnist iid
 B = 10 E = 1/5/20
